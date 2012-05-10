@@ -1,0 +1,62 @@
+#
+#ifndef TGA24_H
+#define TGA24_H
+#include <stdio.h>
+
+using namespace std;
+
+class Tga24
+{
+	public:
+	Tga24() = 0;
+	int height();
+	int width();
+
+	private:
+	int _height;
+	int _width;
+	int _bitsperpixel;
+	int _datatypecode;
+	FILE* _image;	
+};
+
+#endif
+
+#ifndef TGA24R_H
+#define TGA24R_H
+#include <stdio.h>
+
+using namespace std;
+
+class Tga24r:public Tga24
+{	
+	public:
+	Tga( char* filename );
+	~Tga();
+	int red( int x, int y );
+	int blue( int x, int y );
+	int green( int x, int y );
+	
+};
+
+#endif
+
+#ifndef TGA24W_H
+#define TGA24W_H
+#include <stdio.h>
+
+using namespace std;
+
+class Tga24w: public Tga24
+{
+	public:
+	Tga24w( char* filename, int h, int w );
+	~Tga24w();
+	int pos( int x, int y, int color );
+	int pos( int x, int y, int r, int b, int g );
+	int red( int x, int y, int r );
+	int blue( int x, int y, int b );
+	int green( int x, int y, int g );
+};
+
+#endif
